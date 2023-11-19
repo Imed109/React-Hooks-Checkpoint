@@ -7,49 +7,77 @@ const Movies = () => {
       title: "Inception",
       description:
         "A thief who enters the dreams of others to steal their secrets.",
-      posterURL: "https://example.com/inception.jpg",
-      rating: "4.7",
+      posterURL:
+        "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p7825626_p_v8_af.jpg",
+      rating: "7",
     },
     {
       title: "The Shawshank Redemption",
       description:
         "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-      posterURL: "https://example.com/shawshank.jpg",
-      rating: "4.9",
+      posterURL:
+        "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
+      rating: "6",
     },
     {
       title: "The Dark Knight",
       description:
         "When the menace known as the Joker emerges, Batman must confront one of the greatest psychological and physical tests of his ability to fight injustice.",
-      posterURL: "https://example.com/darkknight.jpg",
-      rating: "4.8",
+      posterURL:
+        "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg",
+      rating: "3",
     },
     {
       title: "Pulp Fiction",
       description:
         "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
-      posterURL: "https://example.com/pulpfiction.jpg",
-      rating: "4.6",
+      posterURL:
+        "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+      rating: "1",
     },
     {
       title: "Forrest Gump",
       description:
         "The story of a man with a low IQ who accomplished great things in his life.",
-      posterURL: "https://example.com/forrestgump.jpg",
-      rating: "4.5",
+      posterURL:
+        "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
+      rating: "2",
     },
   ]);
   const addToMovies = (newMovie) => {
-    setMovies([...movies, newMovie]);
+    setMovies([newMovie, ...movies]);
   };
+  const [filterTitle, setFilterTitle] = useState("");
+  const [filterRating, setFilterRating] = useState("");
+  // filtering function
+  const filteredMovies = movies.filter((movie) => {
+    return (
+      movie.title.toLowerCase().includes(filterTitle.toLowerCase()) &&
+      (!filterRating || parseFloat(movie.rating) >= parseFloat(filterRating))
+    );
+  });
   return (
     <div>
-
       <Adding addToMovies={addToMovies} />
-    {movies.map((film)=>
-        <MovieCard key={film.title}{...film}/>
-    )}
-        
+      <div>
+        <input
+          type="text"
+          placeholder="Filter by title"
+          value={filterTitle}
+          onChange={(e) => setFilterTitle(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Filter by rating"
+          value={filterRating}
+          onChange={(e) => setFilterRating(e.target.value)}
+        />
+      </div>
+      <div style={{ display: "grib", gap: "50px" }}>
+        {filteredMovies.map((film) => (
+          <MovieCard key={film.title} {...film} />
+        ))}
+      </div>
     </div>
   );
 };
