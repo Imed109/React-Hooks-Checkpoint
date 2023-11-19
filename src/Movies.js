@@ -3,6 +3,7 @@ import MovieCard from "./MovieCard";
 import Adding from "./Adding";
 const Movies = () => {
   const [movies, setMovies] = useState([
+    //using the useState and declaring the init movies at the same tiem
     {
       title: "Inception",
       description:
@@ -45,6 +46,7 @@ const Movies = () => {
     },
   ]);
   const addToMovies = (newMovie) => {
+    //function to add the new movie
     setMovies([newMovie, ...movies]);
   };
   const [filterTitle, setFilterTitle] = useState("");

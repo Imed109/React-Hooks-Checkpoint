@@ -1,12 +1,1 @@
-.movie-card {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
-  width: 200px; /* Adjust this width as needed */
-}
 
-.movie-poster {
-  width: 100%; /* This will make the image responsive within its container */
-  height: auto;
-  max-height: 250px; /* Adjust the max-height to control the image's maximum height */
-}

@@ -3,16 +3,16 @@ import Card from "react-bootstrap/Card";
 
 function MovieCard({ posterURL, title, description, rating }) {
   const cardStyle = {
-    border: "1px solid #ccc",
+    border: "1px solid #ccc", //adjusting the card
     padding: "10px",
     margin: "10px",
-    width: "200px", // Adjust this width as needed
+    width: "200px",
   };
 
   const imageStyle = {
-    width: "10%",
+    width: "10%", //adjusting the image
     height: "auto",
-    maxHeight: "250px", // Adjust the max-height to control the image's maximum height
+    maxHeight: "250px",
   };
 
   return (
